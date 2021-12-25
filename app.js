@@ -11,6 +11,10 @@ The brain wallet of shootscoots
 addy : 13HLzC5Jqwko5dHuY3fhEuJTrpZQLuiyYH
 PrivateKey : Ky2AqWJaCQrnYxHRGeyWxGadTjJP6dLfHqskZixmJYDBTRFXtArn
 
+The brain wallet of ddsa
+addy : 19Fq8S93AMyQiRSuEqvY36Q7xDM4XYfgQk
+PrivateKey : L5nAy7eUzuTKo2jRTPJihtm9zsDakaTxU1YgUcY2cdFaeTycH1Zn
+
 #### As far as Deprecation warnings go
 node  --trace-deprecation app.js
 go
@@ -39,7 +43,15 @@ var bitcore = require("bitcore-lib");
 app.use(bodyparser.urlencoded({
     extended:true
 }))
+function brainWallet(uinput, callback){
+    var input = new Buffer(uinput);
+    var has = bitcore.crypto.Hash.sha256(input);
+    var bn = bitcore.crypto.BN.fromBuffer(has);
+    var pk = new bitcore.PrivateKey(bn).toWIF();
+    var addy = new bitcore.PrivateKey(bn).toAddress();
+    callback(pk,addy);
 
+}
 app.use(bodyparser.json());
 // res.sendfile was deprecated in the video now have changed it to new one
 app.get("/",function(req,res){
@@ -51,15 +63,11 @@ app.get("/",function(req,res){
 app.post("/wallet",function(req,res){
     var brainsrc = req.body.brainsrc;
     console.log("complete "+ brainsrc);
-    var input = new Buffer(brainsrc);
-    var has = bitcore.crypto.Hash.sha256(input);
-    var bn = bitcore.crypto.BN.fromBuffer(has);
-    var pk = new bitcore.PrivateKey(bn).toWIF();
-    var addy = new bitcore.PrivateKey(bn).toAddress();
+    
+    brainWallet(brainsrc, function(private,address){
+        res.send("The brain wallet of "+ brainsrc + "<br> addy : "+ address + "<br> PrivateKey : " + private);
+    });
 
-
-
-    res.send("The brain wallet of "+ brainsrc + "<br> addy : "+ addy + "<br> PrivateKey : " + pk);
 });
 
 app.listen(8080,function(){
