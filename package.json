@@ -1,0 +1,19 @@
+{
+  "name": "node-btc-wallet",
+  "version": "1.0.0",
+  "description": "old bitcoin wallet nodejs video",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@ssh.github.com/Knewmule/Node-Btc-Wallet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "request": "^2.88.2"
+  }
+}
