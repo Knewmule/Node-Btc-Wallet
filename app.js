@@ -21,8 +21,8 @@ complete shootscoots
     at next (/var/www/wwwhtml/udemy/fftne/bmvx/Node-Btc-Wallet/node_modules/express/lib/router/index.js:275:10)
 
 */
-
-
+// const ejsLint = require('ejs-lint');
+const ejjs = require('ejs');
 var express = require("express");
 var app = express();
 var request = require("request");
@@ -45,10 +45,29 @@ app.use(bodyparser.json());
 // res.sendfile was deprecated in the video now have changed it to new one
 app.set("view engine", "ejs");
 
-app.get("/",function(req,res){
+app.get("/", function(req,res){
     // res.send("Current blocks "+ btcBlock);
     // res.sendFile(__dirname+"/index.html");
-    res.render("index"), {lastPrice:price};
+    
+    let myFileLoader = function (filePath) {
+        return 'myFileLoader: ' + fs.readFileSync(filePath);
+      };
+      
+      ejjs.fileLoader = myFileLoader;
+    res.render("index", {lastPrice:price});
+    
+});
+
+app.get("/brain",function(req,res){
+    // res.send("Current blocks "+ btcBlock);
+    // res.sendFile(__dirname+"/index.html");
+    res.render("brain", {lastPrice:price});
+});
+
+app.get("/converter",function(req,res){
+    // res.send("Current blocks "+ btcBlock);
+    // res.sendFile(__dirname+"/index.html");
+    res.render("converter", {lastPrice:price});
 });
 
 
