@@ -1,18 +1,7 @@
 /* find it on blockchain.info/address
-The brain wallet of fucks fuart
-addy : 142HFXWyiPdWrhHxMTxiGMqmSst7vTKvY5
-PrivateKey : L4nRhavK3R7iXhfn44fbauFEVeJhhP5vzgioeDAPsXMdeoKYZt2f
-
-The brain wallet of thaeyd
-addy : 1BichBfmgCQvWfjYZoUAsRpQDFdt8Kq85q
-PrivateKey : KzkkvsNnWnWu2GLxJZdNR7qm3wVwLYDErqF35BkuAkrAYZtHvKKR
-
-The brain wallet of shootscoots
-addy : 13HLzC5Jqwko5dHuY3fhEuJTrpZQLuiyYH
-PrivateKey : Ky2AqWJaCQrnYxHRGeyWxGadTjJP6dLfHqskZixmJYDBTRFXtArn
-
-The brain wallet of ddsa
-addy : 19Fq8S93AMyQiRSuEqvY36Q7xDM4XYfgQk
+The brain wallet of whyyoudbemurderd
+addy : 1MC3gBYsYwQpiEf1LhyZSei3zBA1ETveiK
+PrivateKey : Kx7sJES3PTHUqodQftQyb5gBmfXwRHkdrPRXwpfRRtGPPvjK1vg3
 PrivateKey : L5nAy7eUzuTKo2jRTPJihtm9zsDakaTxU1YgUcY2cdFaeTycH1Zn
 
 #### As far as Deprecation warnings go
@@ -54,10 +43,22 @@ function brainWallet(uinput, callback){
 }
 app.use(bodyparser.json());
 // res.sendfile was deprecated in the video now have changed it to new one
+app.set("view engine", "ejs");
+
 app.get("/",function(req,res){
     // res.send("Current blocks "+ btcBlock);
-    res.sendFile(__dirname+"/index.html");
+    // res.sendFile(__dirname+"/index.html");
+    res.render("index"), {lastPrice:price};
 });
+
+
+request({
+    url:"https://api.blockchain.info/stats",
+    json: true
+},function(error,response,body){
+    console.log(body.market_price_usd);
+    price = body.market_price_usd
+})
 
 
 app.post("/wallet",function(req,res){
