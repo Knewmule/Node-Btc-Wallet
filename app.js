@@ -4,6 +4,11 @@ addy : 1MC3gBYsYwQpiEf1LhyZSei3zBA1ETveiK
 PrivateKey : Kx7sJES3PTHUqodQftQyb5gBmfXwRHkdrPRXwpfRRtGPPvjK1vg3
 PrivateKey : L5nAy7eUzuTKo2jRTPJihtm9zsDakaTxU1YgUcY2cdFaeTycH1Zn
 
+The brain wallet of ovehere
+addy : 1JFEAyxn1bWK42gQ8AngsSxnfgZbA3dHNn
+PrivateKey : KxbW5KhUiJWR4sdK73evHDQKb1nts1mttbMtJnfuGWirho2NWG8Z
+
+
 #### As far as Deprecation warnings go
 node  --trace-deprecation app.js
 go
@@ -48,7 +53,7 @@ app.set("view engine", "ejs");
 app.get("/",function(req,res){
     // res.send("Current blocks "+ btcBlock);
     // res.sendFile(__dirname+"/index.html");
-    res.render("index"), {lastPrice:price};
+    res.render("index",{lastPrice:price});
 });
 
 
