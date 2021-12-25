@@ -1,3 +1,5 @@
+// Just a simple blockchain log of bitcoin api
+
 var http = require("http");
 var request = require("request");
 http.createServer(function(req,res){
