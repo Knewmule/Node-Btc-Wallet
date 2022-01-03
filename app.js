@@ -43,12 +43,14 @@ function brainWallet(uinput, callback){
 }
 app.use(bodyparser.json());
 // res.sendfile was deprecated in the video now have changed it to new one
-app.set("view engine", "ejs");
-
+// app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
+// this allows you to render .html files as templates in addition to .ejs
+app.engine('html', require('ejs').renderFile);
 app.get("/",function(req,res){
     // res.send("Current blocks "+ btcBlock);
     // res.sendFile(__dirname+"/index.html");
-    res.render("index"), {lastPrice:price};
+    res.render("index", {lastPrice:price});
 });
 
 
