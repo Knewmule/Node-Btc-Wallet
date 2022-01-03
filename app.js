@@ -52,7 +52,16 @@ app.get("/",function(req,res){
     // res.sendFile(__dirname+"/index.html");
     res.render("index", {lastPrice:price});
 });
-
+app.get("/brain",function(req,res){
+    // res.send("Current blocks "+ btcBlock);
+    // res.sendFile(__dirname+"/index.html");
+    res.render("brain", {lastPrice:price});
+});
+app.get("/converter",function(req,res){
+    // res.send("Current blocks "+ btcBlock);
+    // res.sendFile(__dirname+"/index.html");
+    res.render("converter", {lastPrice:price});
+});
 
 request({
     url:"https://api.blockchain.info/stats",
