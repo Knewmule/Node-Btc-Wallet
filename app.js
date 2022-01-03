@@ -4,6 +4,9 @@ addy : 1MC3gBYsYwQpiEf1LhyZSei3zBA1ETveiK
 PrivateKey : Kx7sJES3PTHUqodQftQyb5gBmfXwRHkdrPRXwpfRRtGPPvjK1vg3
 PrivateKey : L5nAy7eUzuTKo2jRTPJihtm9zsDakaTxU1YgUcY2cdFaeTycH1Zn
 
+addy : 1C6MFHidpayxquCmU6MJrtNyMwABQ4FpS3
+PrivateKey : L4gSQMMRBj2WmiYFrbgpFNh9Vrnn7rKHQaK9EL2ZNmpWV1vKLRgp
+
 #### As far as Deprecation warnings go
 node  --trace-deprecation app.js
 go
@@ -33,7 +36,7 @@ app.use(bodyparser.urlencoded({
     extended:true
 }))
 function brainWallet(uinput, callback){
-    var input = new Buffer(uinput);
+    var input = new Buffer.from(uinput);
     var has = bitcore.crypto.Hash.sha256(input);
     var bn = bitcore.crypto.BN.fromBuffer(has);
     var pk = new bitcore.PrivateKey(bn).toWIF();
