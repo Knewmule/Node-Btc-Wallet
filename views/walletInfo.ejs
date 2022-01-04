@@ -1,0 +1,23 @@
+<html>
+    <%- include('header.ejs') %>
+    <h1>Wallet Info</h1>
+    Account
+    <form method="post" action="/walletInfo">
+        <input type="text" name="account" >
+        <input type="submit" value="Search" >
+    </form>
+    <hr>
+    <div class="form-group">
+        <label for="Balance">Balance</label>
+        <input type="text" class="form-control" id="balance" placeholder="balance" value="<%= balance %>" aria-describedby="basic-addon1" >
+
+    </div>
+    <div class="form-group">
+        <label for="Balance">totalRecieved</label>
+        <input type="text" class="form-control" id="totalReceived" placeholder="totalReceived" value="<%= totalReceived %>" aria-describedby="totalReceived" >
+    </div>
+    <div class="form-group">
+        <label for="totalSent">totalSent</label>
+        <input type="text" class="form-control" id="totalSent" placeholder="totalSent" value="<%= totalSent %>" aria-describedby="totalSent" >
+    </div>
+</html>

@@ -24,6 +24,15 @@ app.use(bodyparser.json());
 app.set('view engine', 'ejs');
 // this allows you to render .html files as templates in addition to .ejs
 app.engine('html', require('ejs').renderFile);
+
+request({
+    url:"https://api.blockchain.info/stats",
+    json: true
+},function(error,response,body){
+    console.log(body.market_price_usd);
+    price = body.market_price_usd
+})
+
 app.get("/",function(req,res){
     // res.send("Current blocks "+ btcBlock);
     // res.sendFile(__dirname+"/index.html");
@@ -37,17 +46,31 @@ app.get("/brain",function(req,res){
 app.get("/converter",function(req,res){
     // res.send("Current blocks "+ btcBlock);
     // res.sendFile(__dirname+"/index.html");
-    res.render("converter", {lastPrice:price});
+    res.render("converter", {lastPrice:price, balance:0,totalReceived:0, totalSent:0});
 });
 
-request({
-    url:"https://api.blockchain.info/stats",
-    json: true
-},function(error,response,body){
-    console.log(body.market_price_usd);
-    price = body.market_price_usd
-})
+app.get("/walletInfo",function(req,res){
+    // res.send("Current blocks "+ btcBlock);
+    // res.sendFile(__dirname+"/index.html");
+    res.render("walletInfo", {lastPrice:price,balance:0,totalReceived:0, totalSent:0});
+});
 
+
+
+app.post("/walletInfo",function(req,res){
+    var account = req.body.account;
+    console.log("complete "+ account);
+    
+
+    request({
+        url:"https://blockchain.info/rawaddr/"+account,
+        json: true
+    },function(error,response,body){
+        res.render("walletInfo", {lastPrice:price,balance:body.final_balance,
+            totalReceived:response.body.total_received, totalSent:response.body.total_sent});
+    })
+
+});
 
 app.post("/wallet",function(req,res){
     var brainsrc = req.body.brainsrc;
