@@ -1,5 +1,6 @@
 # Node-Btc-Wallet#Nodejs bitcoin wallet old
-
+https://www.blockchain.com/explorer/api
+run server node app.js and go to localhost:8080 in browser
 /* find it on blockchain.info/address
 The brain wallet of whyyoudbemurderd
 addy : 1MC3gBYsYwQpiEf1LhyZSei3zBA1ETveiK
