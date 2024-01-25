@@ -1,4 +1,6 @@
 # Node-Btc-Wallet#Nodejs bitcoin wallet old
+https://live.blockcypher.com/
+https://coinfaucet.eu/en/btc-testnet/ send coins back to mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB
 https://www.blockchain.com/explorer/api
 run server node app.js and go to localhost:8080 in browser
 /* find it on blockchain.info/address
