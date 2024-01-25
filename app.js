@@ -1,3 +1,9 @@
+// ,
+//   "resolutions": {
+//     "bitcore-lib": "0.16.0"
+//   }
+
+
 var express = require("express");
 var app = express();
 var request = require("request");
