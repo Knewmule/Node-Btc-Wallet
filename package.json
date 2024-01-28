@@ -20,5 +20,9 @@
     "ejs-lint": "^1.2.1",
     "express": "^4.17.2",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/bitcore-lib": "^0.15.6",
+    "@types/node": "^20.11.10"
   }
 }
