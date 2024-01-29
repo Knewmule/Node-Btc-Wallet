@@ -1,7 +1,7 @@
 // delete global._bitcore;
 // declare module 'bitcore-explorers';
 var bitcore = require("bitcore-lib");
-var Insight = require('bitcore-explorers');
+var Insight = require('bitcore-explorers').Insight;
 // if (global._bitcore) delete global._bitcore;
 // type valFromBuffer = (a: string) => void;
 // function buffer(a:string):Buffer {
